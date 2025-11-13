@@ -323,7 +323,7 @@ Você só precisa fornecer:
 - Nome das colunas
 
 **Link da Demonstração:**  
-(em breve no README)
+(https://ee94b26a4eec384aea.gradio.live/ )
 
 ---
 
@@ -513,9 +513,35 @@ As demonstrações usam inglês como idioma padrão, mas você pode adaptar faci
 ---
 
 
+### 3. RAG: Retrieval de Pokemon com base na desccrição + Resposta do LLava
+
+Demonstração online: https://a133636e14105ede19.gradio.live/ 
 
 
+Execute localmente:
+```
 
+cd Demo
+python app_rag.py
+
+```
+
+Você pode:
+- Usar seu próprio dataset
+- Usar seu modelo fine-tuned
+- Usar o modelo base
+- Trocar a VLLM
+
+Basta editar:
+- Nome do dataset
+- Split
+- Colunas
+- Modelo
+
+Observação:  
+As demonstrações usam inglês como idioma padrão, mas você pode adaptar facilmente para português.
+
+---
 
 
 ## Construí uma lista de papers interessantes sobre o assunto.
