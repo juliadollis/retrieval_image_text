@@ -1,0 +1,209 @@
+# TABELAS POR MODELO
+
+---
+
+## Modelo: turing552/cliplarge-flickr30k-ptbr-5ep-novo
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.39799 | 0.64645 | 0.74345 | 0.50406 | 0.56125 |
+| laicsiifes/flickr8k-pt-br | 0.83333 | 0.97333 | 0.99000 | 0.89059 | 0.91513 |
+| laicsiifes/flickr30k-pt-br | 0.76310 | 0.93862 | 0.96897 | 0.83823 | 0.87036 |
+| lmms-lab/flickr30k | 0.91538 | 0.99528 | 0.99780 | 0.94882 | 0.96114 |
+| Artificio/WikiArt | 0.22702 | 0.44436 | 0.54015 | 0.31920 | 0.37170 |
+
+---
+
+## Modelo: openai/clip-vit-base-patch16
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.06982 | 0.16814 | 0.23469 | 0.11321 | 0.14166 |
+| laicsiifes/flickr8k-pt-br | 0.21833 | 0.43500 | 0.56500 | 0.31519 | 0.37386 |
+| laicsiifes/flickr30k-pt-br | 0.08897 | 0.22000 | 0.30000 | 0.14599 | 0.18215 |
+| lmms-lab/flickr30k | 0.70494 | 0.90815 | 0.94998 | 0.79154 | 0.83026 |
+| Artificio/WikiArt | 0.19903 | 0.41705 | 0.52407 | 0.29292 | 0.34768 |
+| Marqo/deepfashion-multimodal | 0.00870 | 0.02774 | 0.04513 | 0.01736 | 0.02377 |
+
+---
+
+## Modelo: openai/clip-vit-large-patch14
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.11354 | 0.25522 | 0.34509 | 0.17651 | 0.21607 |
+| laicsiifes/flickr8k-pt-br | 0.29333 | 0.58000 | 0.71000 | 0.41426 | 0.48445 |
+| laicsiifes/flickr30k-pt-br | 0.18310 | 0.35897 | 0.45552 | 0.26025 | 0.30633 |
+| lmms-lab/flickr30k | 0.71312 | 0.91696 | 0.95974 | 0.80018 | 0.83918 |
+| Artificio/WikiArt | 0.26741 | 0.52019 | 0.62470 | 0.37466 | 0.43425 |
+| Marqo/deepfashion-multimodal | 0.00823 | 0.03479 | 0.05712 | 0.02022 | 0.02876 |
+
+---
+
+## Modelo: google/siglip-so400m-patch14-384
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.36345 | 0.61106 | 0.71144 | 0.46885 | 0.52672 |
+| laicsiifes/flickr8k-pt-br | 0.68333 | 0.90667 | 0.94333 | 0.77672 | 0.81764 |
+| laicsiifes/flickr30k-pt-br | 0.50655 | 0.75172 | 0.81897 | 0.61043 | 0.66084 |
+| lmms-lab/flickr30k | 0.91979 | 0.98930 | 0.99654 | 0.95038 | 0.96192 |
+| Artificio/WikiArt (ATUALIZADO) | 0.39128 | 0.64833 | 0.73801 | 0.49962 | 0.55678 |
+| Marqo/deepfashion-multimodal | 0.02374 | 0.06911 | 0.11048 | 0.04400 | 0.05934 |
+
+---
+
+## Modelo: turing552/siglip-flickr30k-ptbr-5ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.55152 | 0.78971 | 0.85699 | 0.65150 | 0.70114 |
+| laicsiifes/flickr8k-pt-br | 0.89333 | 0.99333 | 0.99833 | 0.93835 | 0.95358 |
+| laicsiifes/flickr30k-pt-br | 0.80448 | 0.95552 | 0.97828 | 0.86865 | 0.89568 |
+| lmms-lab/flickr30k | 0.88833 | 0.98616 | 0.99434 | 0.93265 | 0.94820 |
+
+---
+
+## Modelo: google/siglip-base-patch16-224
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| laicsiifes/coco-captions-pt-br | 0.74600 | 0.95400 | 0.99200 | 0.83357 | 0.87238 |
+| laicsiifes/flickr8k-pt-br | 0.93000 | 1.00000 | 1.00000 | 0.96167 | 0.97155 |
+| laicsiifes/flickr30k-pt-br | 0.85000 | 0.99000 | 1.00000 | 0.91708 | 0.93817 |
+| lmms-lab/flickr30k | 0.84303 | 0.96917 | 0.98364 | 0.89794 | 0.91926 |
+| Artificio/WikiArt (ATUALIZADO) | 0.18605 | 0.37956 | 0.47002 | 0.26851 | 0.31627 |
+| Marqo/deepfashion-multimodal | 0.02492 | 0.07593 | 0.11777 | 0.04849 | 0.06460 |
+
+---
+
+## Modelo: turing552/siglip-wikiart-5ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Artificio/WikiArt | 0.30363 | 0.57734 | 0.69801 | 0.42128 | 0.48712 |
+
+---
+
+## Modelo: turing552/siglipbase-wikiart-5ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Artificio/WikiArt | 0.30906 | 0.58412 | 0.69860 | 0.42561 | 0.49063 |
+
+---
+
+## Modelo: turing552/clip-wikiart-raw-v1-5ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Artificio/WikiArt | 0.36736 | 0.71051 | 0.82625 | 0.51144 | 0.58699 |
+
+---
+
+## Modelo: turing552/clip-wikiart-raw-v1-10ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Artificio/WikiArt | 0.43826 | 0.76407 | 0.85598 | 0.57683 | 0.64435 |
+
+---
+
+## Modelo: turing552/clip-deepfashion-multimodal-10ep
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Marqo/deepfashion-multimodal | 0.31852 | 0.72661 | 0.87236 | 0.48960 | 0.58128 |
+
+---
+
+## Modelo: turing552/siglip-fashion-5ep (NOVO)
+
+| Dataset | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| Marqo/deepfashion-multimodal | 0.31100 | 0.64716 | 0.77927 | 0.45251 | 0.53051 |
+
+---
+
+# TABELAS POR DATASET
+
+---
+
+## Dataset: laicsiifes/coco-captions-pt-br
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| turing552/cliplarge-flickr30k-ptbr-5ep-novo | 0.39799 | 0.64645 | 0.74345 | 0.50406 | 0.56125 |
+| openai/clip-vit-base-patch16 | 0.06982 | 0.16814 | 0.23469 | 0.11321 | 0.14166 |
+| openai/clip-vit-large-patch14 | 0.11354 | 0.25522 | 0.34509 | 0.17651 | 0.21607 |
+| google/siglip-so400m-patch14-384 | 0.36345 | 0.61106 | 0.71144 | 0.46885 | 0.52672 |
+| turing552/siglip-flickr30k-ptbr-5ep | 0.55152 | 0.78971 | 0.85699 | 0.65150 | 0.70114 |
+| google/siglip-base-patch16-224 | 0.74600 | 0.95400 | 0.99200 | 0.83357 | 0.87238 |
+
+---
+
+## Dataset: laicsiifes/flickr8k-pt-br
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| turing552/cliplarge-flickr30k-ptbr-5ep-novo | 0.83333 | 0.97333 | 0.99000 | 0.89059 | 0.91513 |
+| openai/clip-vit-base-patch16 | 0.21833 | 0.43500 | 0.56500 | 0.31519 | 0.37386 |
+| openai/clip-vit-large-patch14 | 0.29333 | 0.58000 | 0.71000 | 0.41426 | 0.48445 |
+| google/siglip-so400m-patch14-384 | 0.68333 | 0.90667 | 0.94333 | 0.77672 | 0.81764 |
+| turing552/siglip-flickr30k-ptbr-5ep | 0.89333 | 0.99333 | 0.99833 | 0.93835 | 0.95358 |
+| google/siglip-base-patch16-224 | 0.93000 | 1.00000 | 1.00000 | 0.96167 | 0.97155 |
+
+---
+
+## Dataset: laicsiifes/flickr30k-pt-br
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| turing552/cliplarge-flickr30k-ptbr-5ep-novo | 0.76310 | 0.93862 | 0.96897 | 0.83823 | 0.87036 |
+| openai/clip-vit-base-patch16 | 0.08897 | 0.22000 | 0.30000 | 0.14599 | 0.18215 |
+| openai/clip-vit-large-patch14 | 0.18310 | 0.35897 | 0.45552 | 0.26025 | 0.30633 |
+| google/siglip-so400m-patch14-384 | 0.50655 | 0.75172 | 0.81897 | 0.61043 | 0.66084 |
+| turing552/siglip-flickr30k-ptbr-5ep | 0.80448 | 0.95552 | 0.97828 | 0.86865 | 0.89568 |
+| google/siglip-base-patch16-224 | 0.85000 | 0.99000 | 1.00000 | 0.91708 | 0.93817 |
+
+---
+
+## Dataset: lmms-lab/flickr30k
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| turing552/cliplarge-flickr30k-ptbr-5ep-novo | 0.91538 | 0.99528 | 0.99780 | 0.94882 | 0.96114 |
+| openai/clip-vit-base-patch16 | 0.70494 | 0.90815 | 0.94998 | 0.79154 | 0.83026 |
+| openai/clip-vit-large-patch14 | 0.71312 | 0.91696 | 0.95974 | 0.80018 | 0.83918 |
+| google/siglip-so400m-patch14-384 | 0.91979 | 0.98930 | 0.99654 | 0.95038 | 0.96192 |
+| turing552/siglip-flickr30k-ptbr-5ep | 0.88833 | 0.98616 | 0.99434 | 0.93265 | 0.94820 |
+| google/siglip-base-patch16-224 | 0.84303 | 0.96917 | 0.98364 | 0.89794 | 0.91926 |
+
+---
+
+## Dataset: Artificio/WikiArt
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| openai/clip-vit-base-patch16 | 0.19903 | 0.41705 | 0.52407 | 0.29292 | 0.34768 |
+| openai/clip-vit-large-patch14 | 0.26741 | 0.52019 | 0.62470 | 0.37466 | 0.43425 |
+| google/siglip-so400m-patch14-384  | 0.29128 | 0.54833 | 0.63801 | 0.39962 | 0.45678 |
+| google/siglip-base-patch16-224 ) | 0.18605 | 0.37956 | 0.47002 | 0.26851 | 0.31627 |
+| turing552/siglip-wikiart-5ep | 0.30363 | 0.57734 | 0.69801 | 0.42128 | 0.48712 |
+| turing552/cliplarge-flickr30k-ptbr-5ep-novo | 0.22702 | 0.44436 | 0.54015 | 0.31920 | 0.37170 |
+| turing552/siglipbase-wikiart-5ep | 0.30906 | 0.58412 | 0.69860 | 0.42561 | 0.49063 |
+| turing552/clip-wikiart-raw-v1-5ep | 0.36736 | 0.71051 | 0.82625 | 0.51144 | 0.58699 |
+| turing552/clip-wikiart-raw-v1-10ep | 0.43826 | 0.76407 | 0.85598 | 0.57683 | 0.64435 |
+
+---
+
+## Dataset: Marqo/deepfashion-multimodal
+
+| Modelo | recall@1 | recall@5 | recall@10 | mrr | ndcg@10 |
+| --- | --- | --- | --- | --- | --- |
+| openai/clip-vit-base-patch16 | 0.00870 | 0.02774 | 0.04513 | 0.01736 | 0.02377 |
+| openai/clip-vit-large-patch14 | 0.00823 | 0.03479 | 0.05712 | 0.02022 | 0.02876 |
+| google/siglip-so400m-patch14-384 | 0.02374 | 0.06911 | 0.11048 | 0.04400 | 0.05934 |
+| google/siglip-base-patch16-224 | 0.02492 | 0.07593 | 0.11777 | 0.04849 | 0.06460 |
+| turing552/clip-deepfashion-multimodal-10ep | 0.31852 | 0.72661 | 0.87236 | 0.48960 | 0.58128 |
+| turing552/siglip-fashion-5ep (NOVO) | 0.31100 | 0.64716 | 0.77927 | 0.45251 | 0.53051 |
