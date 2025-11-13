@@ -213,176 +213,249 @@ O modelo B melhora todas as métricas, ordena melhor, encontra resultados mais c
 
 
 
-### Terminamos a "Teoria", vamos para a prática?
 
+### Terminamos a "Teoria"... agora começa a prática!
 
+Depois de entender o que é Retrieval Imagem–Texto, chegou a hora de trabalhar com os seus dados, avaliar modelos e decidir os próximos passos.  
+Esta seção foi organizada como um guia sequência-de-decisão para te ajudar a ir do zero até a implementação completa.
 
 ---
-## OK, já sei o que é Retrieval, tenho meus dados, como eu começo?
 
-1. Tenha seus dados organizados
-   Nesse repositório usamos apenas dados do Hugging Face. Garanta que exista uma coluna para a imagem e uma para o texto.
+## OK, já sei o que é Retrieval, tenho meus dados. Como eu começo?
 
-   a. Seus dados são próprios e estão locais
-   Então monte um script para subir seus dados como um dataset no seu repositório do Hugging Face (por exemplo, com colunas `image` e `text` ou `caption`).
+### 1. Organize seus dados
+Neste repositório trabalhamos exclusivamente com *datasets do Hugging Face*.  
+Certifique-se de ter:
 
-   b. É um dataset público do Hugging Face
-   Perfeito. Basta verificar quais são as colunas de imagem e texto e adaptar o código para usá-las.
+- Uma coluna contendo imagens (`image`)
+- Uma coluna contendo textos/legendas (`text` ou `caption`)
 
-2. Faça a primeira avaliação sem fine-tuning (zero-shot)
-   Siga este checklist:
+Existem dois cenários:
 
-   * Carregar o modelo e o processor.
-   * Extrair embeddings das imagens do split de teste.
-   * Extrair embeddings dos textos do mesmo split (mesmo índice das imagens).
-   * Calcular similaridade coseno entre embeddings de texto e imagem.
-   * Para cada texto, rankear as imagens e medir Recall@K, MRR e nDCG@K.
+**a. Seus dados são próprios (locais)**  
+Prepare um script para converter seus arquivos em um dataset do Hugging Face.  
+Qualquer estrutura simples como:
 
-   Isso já responde perguntas importantes:
+```
 
-   * O modelo entende razoavelmente bem o seu domínio?
-   * Os textos estão claros ou muito confusos?
-   * Vale a pena investir em fine-tuning ou o baseline já é bom?
+{"image": <PIL.Image>, "text": "<sua legenda>"}
 
-3. Decida o que você fará em seguida
+```
 
-   a. Seus dados tiveram bons resultados com o modelo base
-   Continue utilizando o modelo base (zero-shot) e apenas documente as métricas.
+já é suficiente.
 
-   b. Fine-tuning
-   Se os resultados estiverem medianos e você tiver dados suficientes, faça fine-tuning do modelo no seu domínio (por exemplo, arte, médico, jurídico).
+**b. Você está usando um dataset público da HF**  
+Perfeito. Apenas confira quais são as colunas de imagem e texto e adapte o script de inferência/fine-tuning.
 
-   c. Muitos dados
-   Se você tem muitos dados (milhões de pares) e recursos de hardware, pode considerar abordagens mais pesadas como ELIP ou variações com hard sample mining, prompting e reranking.
+---
 
-   d. Outras abordagens
-   Dependendo do seu objetivo, você pode explorar outras abordagens:
-   
+### 2. Faça a primeira avaliação sem fine-tuning (zero-shot)
+
+Antes de treinar qualquer coisa, avalie a qualidade do modelo base no seu domínio.  
+Use este checklist:
+
+- Carregar o modelo e o processor.
+- Extrair embeddings das imagens do **split de teste**.
+- Extrair embeddings dos textos do mesmo split (mesmo índice).
+- Calcular similaridade coseno entre textos e imagens.
+- Para cada texto, rankear imagens e medir:
+  - Recall@K (1, 5, 10)
+  - MRR
+  - nDCG@K
+
+Isso responde perguntas fundamentais:
+
+- O modelo base entende minimamente o seu domínio?
+- Suas legendas estão boas ou muito genéricas?
+- Vale a pena investir em fine-tuning ou o baseline já é suficiente?
+
+---
+
+### 3. Decida seu próximo passo
+
+**a. O modelo base foi bem**  
+Ótimo! Continue usando zero-shot. Documente suas métricas e siga para o desenvolvimento da sua aplicação.
+
+**b. O modelo base teve desempenho mediano**  
+Faça fine-tuning com seus dados (arte, médico, jurídico, moda, etc.).
+
+**c. Você tem muitos dados (milhões de pares)**  
+Considere abordagens avançadas como ELIP, hard sample mining, prompting e reranking.
+
+**d. Você tem objetivos específicos**  
+Pode explorar:
+- RAG multimodal
+- Recomendação visual
+- Buscadores inteligentes
+- Geração condicionada por imagens recuperadas
+
+---
 
 # Como eu analiso os meus dados?
 
-### 1. Código
-Você pode executar os codigos em InferênciaEMétricas/inferencias_clip.py ou InferênciaEMétricas/inferencias_siglip.py
-Alterando o Dataset e o Modelo se preferir.
+### 1. Usando código local
+Na pasta `InferenciaEMetricas/` você encontra:
 
-## 2. Demonstração
-Preparei uma Demonstração que já calcula as métricas para modelos Clip e SigLip e já analisa seu Dataset e seus resultados.
-Tudo que você precisa é de escrever o caminho do Dataset HuggingFace (público), split e colunas.
+- `inferencias_clip.py`
+- `inferencias_siglip.py`
 
-Link:
+Nesses scripts você só precisa alterar:
+- Nome do dataset
+- Split
+- Nome do modelo
 
+---
 
+### 2. Usando a Demonstração Automática
+Existe uma demonstração que:
 
+- Carrega seu dataset HuggingFace (público)
+- Extrai embeddings
+- Avalia modelos CLIP e SigLIP automaticamente
+- Calcula todas as métricas
+- Gera interpretação dos resultados
 
-# Analisei meus dados, ja sei o que quero fazer!!!
+Você só precisa fornecer:
+- Caminho do dataset
+- Split
+- Nome das colunas
 
-## Implementações
+**Link da Demonstração:**  
+(em breve no README)
+
+---
+
+# Analisei meus dados. Já sei o que quero fazer!
+
+Agora você pode escolher entre Fine-Tuning, Inferência, Métricas ou até replicar o ELIP.
+
+---
+
+# Implementações do Repositório
 
 ## Fine Tuning
 
-Nesta etapa você adapta o modelo base ao seu domínio (arte, médico, jurídico, etc.).
+Nesta etapa você adapta o modelo base ao seu domínio.
 
-- Os scripts de fine-tuning estão na pasta `FineTuning`.
-- Nesses scripts você deve:
-  - Definir o nome do modelo base (por exemplo, CLIP ou SigLIP).
-  - Definir o nome do dataset do Hugging Face que será usado para treino.
-  - Ajustar hiperparâmetros como batch size, número de épocas e learning rate.
-- Sempre que mudar de experimento (outro dataset, outro modelo), lembre de:
-  - Atualizar o caminho do modelo em `MODEL_NAME` ou variável equivalente.
-  - Atualizar o `HUB_MODEL_ID` para salvar cada experimento com um nome diferente no Hugging Face Hub.
+Scripts estão em: `FineTuning/`
 
-Depois do treino, o modelo fine-tunado é salvo na pasta de saída configurada (por exemplo, `./siglip-fwikiart-v1`) e, opcionalmente, enviado para o Hub.
+Você deve:
+- Definir o modelo base (`MODEL_NAME`)
+- Definir o dataset (`DATASET_NAME`)
+- Ajustar:
+  - batch size
+  - número de épocas
+  - learning rate
 
+Sempre que fizer um novo experimento, lembre de:
+- Atualizar o caminho do modelo em `MODEL_NAME`
+- Atualizar `HUB_MODEL_ID` (nome do modelo salvo no Hub)
+
+Após o treino:
+- O modelo é salvo no diretório de saída
+- Opcionalmente enviado para o Hugging Face Hub
+
+---
 
 ## Inferência e Métricas
 
-Aqui você avalia o modelo (base ou fine-tunado) no seu dataset de teste.
+Scripts em: `InferenciaEMetricas/`
 
-- Os scripts de inferência e cálculo de métricas estão na pasta `InferenciaEMetricas`.
-- Nesses scripts você deve:
-  - Apontar para o modelo correto:
-    - Modelo base (por exemplo, `google/siglip-base-patch16-256-multilingual`), ou
-    - Modelo fine-tunado salvo no Hub (por exemplo, `turing552/siglip-wikiart-5ep`).
-  - Carregar o mesmo dataset (ou split) que foi usado para teste.
-  - Calcular:
-    - Recall@K (geralmente K = 1, 5, 10)
-    - MRR
-    - nDCG@K
+Avaliando o modelo:
+- Aponte para o modelo correto:
+  - Base (`google/siglip-base-patch16-256-multilingual`)
+  - Fine-tuned (`turing552/siglip-wikiart-5ep`)
+- Carregue o mesmo split de teste
+- Calcule:
+  - Recall@1, Recall@5, Recall@10
+  - MRR
+  - nDCG@10
 
-Checklist ao mudar o caminho do modelo:
+Checklist ao trocar o modelo:
+1. Atualizar `MODEL_NAME`
+2. Carregar o processor correspondente
+3. Garantir que o split de teste é o mesmo do fine-tuning
+4. Conferir colunas de imagem e texto
 
-1. Atualizar a variável `MODEL_NAME` (ou equivalente) para o modelo que você quer testar.
-2. Garantir que o processor carregado corresponde ao mesmo modelo.
-3. Confirmar que o script está usando o split de teste correto e as mesmas colunas de imagem e texto.
-
-Registrar as métricas obtidas em uma tabela no README ajuda a comparar:
-
-- Modelo base vs modelo fine-tunado
+Registrar os resultados no README facilita comparar:
+- Base vs fine-tuned
+- Diferentes domínios
 - Diferentes datasets
-- Diferentes domínios (arte, médico, etc.)
 
+---
 
-## Requisitos para replicar ELIP
+# Requisitos para Replicar ELIP
 
-ELIP é um método pesado, que exige preparação de dados e bastante capacidade computacional. A ideia deste repositório é também apontar um caminho para quem quiser reproduzir algo próximo ao paper.
+ELIP é pesado e exige hardware e datasets grandes. Se quiser algo fiel ao paper, siga esta estrutura:
 
-Estrutura sugerida no repositório:
+```
 
-- `ELIP/`
-  - `original`   (versão mais próxima do paper, em inglês)
-  - `wikiart`    (adaptação para domínio de arte)
-  - `PTBR`       (adaptação para datasets em português, como Flickr8k-pt-br)
+ELIP/
+original/   -> versão mais próxima do paper
+wikiart/    -> adaptação para domínio de arte
+PTBR/       -> adaptação para datasets em português
 
-Requisitos principais:
+```
 
-1. Hardware  
-   - GPU com no mínimo 32 GB de VRAM (idealmente mais, se for usar DataCompDR-12M).
-   - Espaço em disco adequado para os datasets abaixo.
+### Requisitos
 
-2. Dataset do paper  
-   - `apple/DataCompDR-12M` (ou variante bf16)  
-   - Requer cerca de 1 TB de armazenamento.
+1. **Hardware**
+   - GPU com no mínimo 32 GB de VRAM  
+   - SSD com espaço suficiente para datasets grandes
 
-3. Dataset WeiChow/cc3m  
-   - `WeiChow/cc3m`  
-   - Requer aproximadamente 800 GB de armazenamento.
+2. **Dataset do paper**
+   - `apple/DataCompDR-12M`
+   - Requer ~1 TB
 
-4. Datasets menores  
-   - `Artificio/WikiArt`  
-   - `laicsiifes/flickr8k-pt-br`  
-   - Requerem em torno de 250 GB de armazenamento para trabalhar com mais folga (checkpoints, índices, logs, etc.).
+3. **Dataset WeiChow/cc3m**
+   - Requer ~800 GB
+
+4. **Datasets menores**
+   - `Artificio/WikiArt`
+   - `laicsiifes/flickr8k-pt-br`
+   - Requerem ~250 GB
 
 Resumo prático:
+- Paper original → 1 TB  
+- CC3M → 800 GB  
+- Experimentos menores → 250 GB
 
-- Para replicar com o dataset do paper (`apple/DataCompDR-12M`), planeje pelo menos 1 TB de armazenamento.
-- Para usar `WeiChow/cc3m`, planeje algo em torno de 800 GB.
-- Para experimentos menores com `Artificio/WikiArt` ou `laicsiifes/flickr8k-pt-br`, algo em torno de 250 GB costuma ser suficiente para dados, checkpoints e índices de retrieval.
+---
 
+# Agora sim: vamos colocar em prática!
 
+## Temos 3 demonstrações prontas para usar Retrieval Imagem–Texto
 
+---
 
+### 1. Demo: Retrieval de Moda
 
-# Agora vamos de fato colocar em prática? 
-## Aqui temos 3 diferentes demonstrações do uso do Retrieval Imagem - Texto
-
-
-1. Retrieval - Moda
-
-   Aqui temos um link de Demonstração do uso de Retrieval para busca de roupas a partir de uma descrição.
-
+Demonstração online:  
 https://e4f8dadade2c8014aa.gradio.live/
 
+Execute localmente:
+```
 
-Você pode executar essa demonstração na sua máquina apenas executando:
-
-/Demonstraçoes
+cd Demonstrações
 python app_retrieval_moda.py
 
+```
 
-Ainda melhor!!! Você pode usar o seu dataset e o seu modelo ajustado para ele (Realizado na Etapa de Fine Tuning) ou mesmo o modelo base.
-Tudo que você precisa fazer é alterar o caminho do Dataset, split, colunas e o nome do modelo.
-(Se alterar a arquitetura do modelo, algumas alterações serão necessárias)
+Você pode:
+- Usar seu próprio dataset
+- Usar seu modelo fine-tuned
+- Usar o modelo base
 
+Basta editar:
+- Nome do dataset
+- Split
+- Colunas
+- Modelo
 
+Observação:  
+As demonstrações usam inglês como idioma padrão, mas você pode adaptar facilmente para português.
 
-Lembre-se: são aplicações em Inglês, mas voce pode adaptar isso!
+```
+
+---
+
