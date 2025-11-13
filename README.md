@@ -4,13 +4,6 @@
 
 
 
-Ok. Eu vou deixar tudo bonito, organizado e pronto para colar no README.
-Vou transformar esse texto em uma **seção visualmente agradável**, com espaçamento, títulos harmoniosos, listas bem distribuídas e blocos temáticos bem separados.
-
-Nada de negrito, conforme suas preferências.
-
-Abaixo está a versão reescrita, formatada e bonita do conteúdo todo.
-
 ---
 
 ## O que é Retrieval Imagem-Texto?
@@ -247,30 +240,7 @@ Informações de requisitos:
    laicsiifes/flickr8k-pt-br
    Requerem em torno de 250 GB.
 
----
 
-Se quiser, posso montar:
-• Um README inteiro já montado
-• Uma versão com sumário interativo
-• Uma versão com emojis (caso queira mais leveza)
-• Uma versão minimalista técnica estilo Google DeepMind
-
-É só escolher o estilo.
-
-
-....
-
-Para replicar o ELIP:
-
--/ELIP
-  - /original (Implementação com ccm3)
-  - /wikiart (Implementação com WikiArt)
-  - /PTBR (Implementação com laicsiifes/flickr8k-pt-br)
-
-- Para bons resultados são necessários muitos dados (Milhões) e bons poderes computacionais.
-
-Requisitos:
-- GPU com no mínimo 32GB de VRAM
 - Para replicar com o Dataset do Paper -> apple/DataCompDR-12M -> São necessários no mínimo 1T de armazenamento
 - Para utilizar -> WeiChow/cc3m -> São necessários cerca de 800 de armazenamento
 - Para Datasets menores como Artificio/WikiArt ou laicsiifes/flickr8k-pt-br -> São necessários cerca de 250GB de aramazenamento
