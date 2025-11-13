@@ -474,9 +474,9 @@ Basta editar:
 Observação:  
 As demonstrações usam inglês como idioma padrão, mas você pode adaptar facilmente para português.
 
-```
+
 ---
-\
+
 ### 2. Demo: Retrieval de Obras de Arte
 
 Demonstração online:
