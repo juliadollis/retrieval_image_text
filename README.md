@@ -454,8 +454,7 @@ results.txt
 
 ### 1. Demo: Retrieval de Moda
 
-Demonstração online:  
-https://e4f8dadade2c8014aa.gradio.live/
+Demonstração online: https://0e21131f0520121642.gradio.live/
 
 Execute localmente:
 ```
@@ -513,3 +512,14 @@ As demonstrações usam inglês como idioma padrão, mas você pode adaptar faci
 
 ---
 
+
+
+
+
+
+
+## Construí uma lista de papers interessantes sobre o assunto.
+Está em 
+```
+papers.txt
+```
