@@ -373,3 +373,7 @@ python app_retrieval_moda.py
 Ainda melhor!!! Você pode usar o seu dataset e o seu modelo ajustado para ele (Realizado na Etapa de Fine Tuning) ou mesmo o modelo base.
 Tudo que você precisa fazer é alterar o caminho do Dataset, split, colunas e o nome do modelo.
 (Se alterar a arquitetura do modelo, algumas alterações serão necessárias)
+
+
+
+Lembre-se: são aplicações em Inglês, mas voce pode adaptar isso!
