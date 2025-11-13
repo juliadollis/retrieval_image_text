@@ -35,22 +35,6 @@ Muitos modelos usam retrieval para encontrar pares semelhantes, auxiliar no cond
 
 ---
 
-## Papers essenciais para começar
-
-CLIP (2021) – OpenAI
-Learning Transferable Visual Models From Natural Language Supervision
-Introduziu o treinamento contraste imagem-texto em larga escala e estabeleceu a base moderna do campo.
-
-ALIGN (2021) – Google
-Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision
-Explora pré-treinamento massivo utilizando bilhões de pares imagem-texto ruidosos.
-
-SigLIP (2024) – Google
-Scaling Vision-Language Models with Sigmoid Loss
-Uma evolução direta do CLIP com uma função de perda mais estável. É o baseline mais forte em diversos benchmarks modernos.
-
----
-
 ## Quais modelos podemos usar para retrieval e por quê?
 
 Modelos CLIP (OpenAI)
@@ -79,6 +63,22 @@ Encoders híbridos (BLIP, BLIP-2, LLaVA, Qwen-VL, Janus-Pro)
 Possuem encoders fortes, podem ser usados para retrieval mesmo não sendo o objetivo principal.
 São ideais para RAG multimodal, análise visual e geração de respostas multimodais.
 Desempenho geralmente inferior a CLIP/SigLIP para retrieval puro.
+
+---
+
+## Papers essenciais para começar
+
+CLIP (2021) – OpenAI
+Learning Transferable Visual Models From Natural Language Supervision
+Introduziu o treinamento contraste imagem-texto em larga escala e estabeleceu a base moderna do campo.
+
+ALIGN (2021) – Google
+Scaling Up Visual and Vision-Language Representation Learning With Noisy Text Supervision
+Explora pré-treinamento massivo utilizando bilhões de pares imagem-texto ruidosos.
+
+SigLIP (2024) – Google
+Scaling Vision-Language Models with Sigmoid Loss
+Uma evolução direta do CLIP com uma função de perda mais estável. É o baseline mais forte em diversos benchmarks modernos.
 
 ---
 
@@ -210,38 +210,127 @@ Conclusão:
 O modelo B melhora todas as métricas, ordena melhor, encontra resultados mais cedo e tem ranking superior.
 
 ---
+## OK, já sei o que é Retrieval, tenho meus dados, como eu começo?
+
+1. Tenha seus dados organizados
+   Nesse repositório usamos apenas dados do Hugging Face. Garanta que exista uma coluna para a imagem e uma para o texto.
+
+   a. Seus dados são próprios e estão locais
+   Então monte um script para subir seus dados como um dataset no seu repositório do Hugging Face (por exemplo, com colunas `image` e `text` ou `caption`).
+
+   b. É um dataset público do Hugging Face
+   Perfeito. Basta verificar quais são as colunas de imagem e texto e adaptar o código para usá-las.
+
+2. Faça a primeira avaliação sem fine-tuning (zero-shot)
+   Siga este checklist:
+
+   * Carregar o modelo e o processor.
+   * Extrair embeddings das imagens do split de teste.
+   * Extrair embeddings dos textos do mesmo split (mesmo índice das imagens).
+   * Calcular similaridade coseno entre embeddings de texto e imagem.
+   * Para cada texto, rankear as imagens e medir Recall@K, MRR e nDCG@K.
+
+   Isso já responde perguntas importantes:
+
+   * O modelo entende razoavelmente bem o seu domínio?
+   * Os textos estão claros ou muito confusos?
+   * Vale a pena investir em fine-tuning ou o baseline já é bom?
+
+3. Decida o que você fará em seguida
+
+   a. Seus dados tiveram bons resultados com o modelo base
+   Continue utilizando o modelo base (zero-shot) e apenas documente as métricas.
+
+   b. Fine-tuning
+   Se os resultados estiverem medianos e você tiver dados suficientes, faça fine-tuning do modelo no seu domínio (por exemplo, arte, médico, jurídico).
+
+   c. Muitos dados
+   Se você tem muitos dados (milhões de pares) e recursos de hardware, pode considerar abordagens mais pesadas como ELIP ou variações com hard sample mining, prompting e reranking.
+
+   d. Outras abordagens
+   Dependendo do seu objetivo, você pode explorar outras abordagens:
+   
+
+
+# Implementando
+
+## Fine Tuning
+
+Nesta etapa você adapta o modelo base ao seu domínio (arte, médico, jurídico, etc.).
+
+- Os scripts de fine-tuning estão na pasta `FineTuning`.
+- Nesses scripts você deve:
+  - Definir o nome do modelo base (por exemplo, CLIP ou SigLIP).
+  - Definir o nome do dataset do Hugging Face que será usado para treino.
+  - Ajustar hiperparâmetros como batch size, número de épocas e learning rate.
+- Sempre que mudar de experimento (outro dataset, outro modelo), lembre de:
+  - Atualizar o caminho do modelo em `MODEL_NAME` ou variável equivalente.
+  - Atualizar o `HUB_MODEL_ID` para salvar cada experimento com um nome diferente no Hugging Face Hub.
+
+Depois do treino, o modelo fine-tunado é salvo na pasta de saída configurada (por exemplo, `./siglip-fwikiart-v1`) e, opcionalmente, enviado para o Hub.
+
+
+## Inferência e Métricas
+
+Aqui você avalia o modelo (base ou fine-tunado) no seu dataset de teste.
+
+- Os scripts de inferência e cálculo de métricas estão na pasta `InferenciaEMetricas`.
+- Nesses scripts você deve:
+  - Apontar para o modelo correto:
+    - Modelo base (por exemplo, `google/siglip-base-patch16-256-multilingual`), ou
+    - Modelo fine-tunado salvo no Hub (por exemplo, `turing552/siglip-wikiart-5ep`).
+  - Carregar o mesmo dataset (ou split) que foi usado para teste.
+  - Calcular:
+    - Recall@K (geralmente K = 1, 5, 10)
+    - MRR
+    - nDCG@K
+
+Checklist ao mudar o caminho do modelo:
+
+1. Atualizar a variável `MODEL_NAME` (ou equivalente) para o modelo que você quer testar.
+2. Garantir que o processor carregado corresponde ao mesmo modelo.
+3. Confirmar que o script está usando o split de teste correto e as mesmas colunas de imagem e texto.
+
+Registrar as métricas obtidas em uma tabela no README ajuda a comparar:
+
+- Modelo base vs modelo fine-tunado
+- Diferentes datasets
+- Diferentes domínios (arte, médico, etc.)
+
 
 ## Requisitos para replicar ELIP
 
-ELIP é um método pesado, exige preparação e capacidade computacional significativa.
+ELIP é um método pesado, que exige preparação de dados e bastante capacidade computacional. A ideia deste repositório é também apontar um caminho para quem quiser reproduzir algo próximo ao paper.
 
 Estrutura sugerida no repositório:
 
-ELIP/
+- `ELIP/`
+  - `original`   (versão mais próxima do paper, em inglês)
+  - `wikiart`    (adaptação para domínio de arte)
+  - `PTBR`       (adaptação para datasets em português, como Flickr8k-pt-br)
 
-* original
-* wikiart
-* PTBR
+Requisitos principais:
 
-Informações de requisitos:
+1. Hardware  
+   - GPU com no mínimo 32 GB de VRAM (idealmente mais, se for usar DataCompDR-12M).
+   - Espaço em disco adequado para os datasets abaixo.
 
-1. Hardware
-   GPU com no mínimo 32 GB de VRAM.
+2. Dataset do paper  
+   - `apple/DataCompDR-12M` (ou variante bf16)  
+   - Requer cerca de 1 TB de armazenamento.
 
-2. Dataset do paper
-   apple/DataCompDR-12M
-   Requer cerca de 1 TB de armazenamento.
+3. Dataset WeiChow/cc3m  
+   - `WeiChow/cc3m`  
+   - Requer aproximadamente 800 GB de armazenamento.
 
-3. Dataset WeiChow/cc3m
-   Requer aproximadamente 800 GB.
+4. Datasets menores  
+   - `Artificio/WikiArt`  
+   - `laicsiifes/flickr8k-pt-br`  
+   - Requerem em torno de 250 GB de armazenamento para trabalhar com mais folga (checkpoints, índices, logs, etc.).
 
-4. Datasets menores
-   Artificio/WikiArt
-   laicsiifes/flickr8k-pt-br
-   Requerem em torno de 250 GB.
+Resumo prático:
 
+- Para replicar com o dataset do paper (`apple/DataCompDR-12M`), planeje pelo menos 1 TB de armazenamento.
+- Para usar `WeiChow/cc3m`, planeje algo em torno de 800 GB.
+- Para experimentos menores com `Artificio/WikiArt` ou `laicsiifes/flickr8k-pt-br`, algo em torno de 250 GB costuma ser suficiente para dados, checkpoints e índices de retrieval.
 
-- Para replicar com o Dataset do Paper -> apple/DataCompDR-12M -> São necessários no mínimo 1T de armazenamento
-- Para utilizar -> WeiChow/cc3m -> São necessários cerca de 800 de armazenamento
-- Para Datasets menores como Artificio/WikiArt ou laicsiifes/flickr8k-pt-br -> São necessários cerca de 250GB de aramazenamento
-  
