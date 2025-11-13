@@ -424,6 +424,23 @@ Resumo prático:
 
 ---
 
+Aqui está a tabela preenchida com seus valores e o custo calculado (0.5 USD/hora).
+
+---
+
+## Tabela de estratégias, horas e custo
+
+| Estratégia               | Horas   | Custo (USD) |
+| ------------------------ | ------- | ----------- |
+| ELIP muitos dados        | 18h     | 9.00        |
+| ELIP 100k dados          | 4h      | 2.00        |
+| Fine-tuning 100k         | 1h30min | 0.75        |
+| Fine-tuning poucos dados | 30min   | 0.25        |
+| Sem fine-tuning          | 0h      | 0.00        |
+
+---
+
+
 # Agora sim: vamos colocar em prática!
 
 ## Temos 3 demonstrações prontas para usar Retrieval Imagem–Texto
