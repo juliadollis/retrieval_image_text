@@ -424,8 +424,12 @@ Resumo prático:
 
 ---
 
-Aqui está a tabela preenchida com seus valores e o custo calculado (0.5 USD/hora).
+Os resultados dos Modelos (Base e após Fine Tuning) em diversos Datasets estão em:
 
+'''
+results.txt
+
+'''
 ---
 
 ## Tabela de estratégias, horas e custo
