@@ -461,7 +461,4 @@ python -m elip_igualpaper.training.train_prompted_clip
 python -m elip_igualpaper.infer.infer_rerank_prompted_clip
 ```
 
-Se ainda ocorrerem erros, revise as versões instaladas de torch, torchvision e torchaudio, e ajuste conforme a GPU e a versão de CUDA disponíveis no container.
 
-```
-```
