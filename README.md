@@ -334,3 +334,6 @@ Resumo prático:
 - Para usar `WeiChow/cc3m`, planeje algo em torno de 800 GB.
 - Para experimentos menores com `Artificio/WikiArt` ou `laicsiifes/flickr8k-pt-br`, algo em torno de 250 GB costuma ser suficiente para dados, checkpoints e índices de retrieval.
 
+
+
+# Vamos rodar Demonstrações Práticas?
