@@ -259,8 +259,17 @@ O modelo B melhora todas as métricas, ordena melhor, encontra resultados mais c
    Dependendo do seu objetivo, você pode explorar outras abordagens:
    
 
+# Como eu analiso os meus dados?
 
+### 1. Código
+Você pode executar os codigos em InferênciaEMétricas/inferencias_clip.py ou InferênciaEMétricas/inferencias_siglip.py
+Alterando o Dataset e o Modelo se preferir.
 
+## 2. Demonstração
+Preparei uma Demonstração que já calcula as métricas para modelos Clip e SigLip e já analisa seu Dataset e seus resultados.
+Tudo que você precisa é de escrever o caminho do Dataset HuggingFace (público), split e colunas.
+
+Link:
 
 
 
