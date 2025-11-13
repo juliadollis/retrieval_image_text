@@ -426,10 +426,11 @@ Resumo prático:
 
 Os resultados dos Modelos (Base e após Fine Tuning) em diversos Datasets estão em:
 
-'''
-results.txt
+```
 
-'''
+results.txt
+```
+
 ---
 
 ## Tabela de estratégias, horas e custo
