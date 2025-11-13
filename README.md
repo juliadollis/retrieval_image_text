@@ -475,6 +475,36 @@ Observação:
 As demonstrações usam inglês como idioma padrão, mas você pode adaptar facilmente para português.
 
 ```
+---
+\
+### 2. Demo: Retrieval de Obras de Arte
+
+Demonstração online:
+https://28a1008c3d1c1030e5.gradio.live 
+
+
+Execute localmente:
+```
+
+cd Demonstrações
+python app_retrieval_arte.py
+
+```
+
+Você pode:
+- Usar seu próprio dataset
+- Usar seu modelo fine-tuned
+- Usar o modelo base
+
+Basta editar:
+- Nome do dataset
+- Split
+- Colunas
+- Modelo
+
+Observação:  
+As demonstrações usam inglês como idioma padrão, mas você pode adaptar facilmente para português.
+
 
 ---
 
