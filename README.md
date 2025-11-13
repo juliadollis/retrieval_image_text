@@ -455,7 +455,7 @@ https://e4f8dadade2c8014aa.gradio.live/
 Execute localmente:
 ```
 
-cd Demonstrações
+cd Demo
 python app_retrieval_moda.py
 
 ```
@@ -486,7 +486,7 @@ https://28a1008c3d1c1030e5.gradio.live
 Execute localmente:
 ```
 
-cd Demonstrações
+cd Demo
 python app_retrieval_arte.py
 
 ```
