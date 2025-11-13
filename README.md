@@ -337,3 +337,6 @@ Resumo prático:
 
 
 # Vamos rodar Demonstrações Práticas?
+
+
+https://e4f8dadade2c8014aa.gradio.live/
