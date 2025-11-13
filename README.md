@@ -209,6 +209,14 @@ nDCG@10 = 0.52
 Conclusão:
 O modelo B melhora todas as métricas, ordena melhor, encontra resultados mais cedo e tem ranking superior.
 
+
+
+
+
+### Terminamos a "Teoria", vamos para a prática?
+
+
+
 ---
 ## OK, já sei o que é Retrieval, tenho meus dados, como eu começo?
 
@@ -252,7 +260,14 @@ O modelo B melhora todas as métricas, ordena melhor, encontra resultados mais c
    
 
 
-# Implementando
+
+
+
+
+
+# Analisei meus dados, ja sei o que quero fazer!!!
+
+## Implementações
 
 ## Fine Tuning
 
