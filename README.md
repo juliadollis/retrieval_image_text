@@ -269,6 +269,8 @@ Isso responde perguntas fundamentais:
 - Suas legendas estão boas ou muito genéricas?
 - Vale a pena investir em fine-tuning ou o baseline já é suficiente?
 
+- Olhe a seção # Como eu analiso o desempenho dos meus dados nos modelos?
+
 ---
 
 ### 3. Decida seu próximo passo
@@ -291,7 +293,7 @@ Pode explorar:
 
 ---
 
-# Como eu analiso os meus dados?
+# Como eu analiso o desempenho dos meus dados nos modelos?
 
 ### 1. Usando código local
 Na pasta `InferenciaEMetricas/` você encontra:
