@@ -1,5 +1,6 @@
 
 
+<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/1d1db614-5fd7-4ee0-82eb-1d92f672f882" />
 
 Para replicar o ELIP:
 
